@@ -218,6 +218,8 @@ public class CreateList extends AppCompatActivity{
             {
                 itemCollection.addItem(new Item(data.getStringExtra("itemName")));
                 itemListFrag.getRv().getAdapter().notifyDataSetChanged();
+                itemListFrag.empIV.setVisibility(View.GONE);
+                itemListFrag.empTV.setVisibility(View.GONE);
             }
         }
 
