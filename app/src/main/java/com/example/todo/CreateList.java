@@ -78,16 +78,15 @@ public class CreateList extends AppCompatActivity{
         timePickerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date d = Calendar.getInstance().getTime();
                 hour = Integer.parseInt(new SimpleDateFormat("h").format(time));
                 minute = Integer.parseInt(new SimpleDateFormat("mm").format(time));
-                shift = new SimpleDateFormat("a").format(d);
+                shift = new SimpleDateFormat("a").format(time);
                 TimePickerDialog tp = new TimePickerDialog(CreateList.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 try {
-                                    time = new SimpleDateFormat(TIME_FORMAT).parse(hourOfDay+":"+minute+" "+shift);
+                                    time = new SimpleDateFormat("h:mm").parse(hourOfDay+":"+minute);
                                     timeTv.setText(new SimpleDateFormat(TIME_FORMAT).format(time));
                                 } catch (ParseException e) {
                                     e.printStackTrace();
@@ -239,7 +238,8 @@ public class CreateList extends AppCompatActivity{
         Calendar calendar = Calendar.getInstance();
         dateTv.setText(new SimpleDateFormat(DATE_FORMAT).format(calendar.getTime()));
         timeTv.setText(new SimpleDateFormat(TIME_FORMAT).format(calendar.getTime()));
-
+        date = Calendar.getInstance().getTime();
+        time = Calendar.getInstance().getTime();
         listName = findViewById(R.id.list_name_inp);
         timePickerBtn = findViewById(R.id.time_btn);
         datePickerBtn = findViewById(R.id.date_picker_btn);
